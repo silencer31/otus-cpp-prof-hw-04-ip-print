@@ -6,9 +6,9 @@
 #include <list>
 #include <tuple>
 
-/**
- * @brief Main function. Start different ip output tests. 
- */
+/// <summary>
+/// Different tests of template function for ip output.
+/// </summary>
 int main (int, char **) {
 	
 	print_ip(int8_t{ -1 }); // 255

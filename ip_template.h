@@ -1,8 +1,6 @@
 #pragma once
 
 /**
- * @file ip_template.h
- *
  * Set of implementations of template function print_ip, developed for outputting IP addresses, represented by different types.
  */
 
@@ -13,7 +11,7 @@
 #include <tuple>
 
  /**
-  * @brief Outputs an ip address represented as an integral type.
+  * Outputs an ip address represented as an integral type.
   */
 template<typename T>
 std::enable_if_t<std::is_integral_v<T>, void>
@@ -33,7 +31,7 @@ print_ip(T const& value)
 }
 
 /**
- * @brief Outputs an ip address represented as std::string.
+ * Outputs an ip address represented as std::string.
  */
 template<typename STR,
 	typename = std::enable_if_t<std::is_convertible_v<STR, std::string>>>
@@ -43,7 +41,7 @@ void print_ip(STR const & value )
 }
 
 /**
- * @brief Outputs an ip address represented as std::vector or std::list.
+ * Outputs an ip address represented as std::vector or std::list.
  */
 template <
 	template <typename, typename> typename Container,
@@ -64,7 +62,7 @@ void print_ip(const Container<Type, Allocator>& container)
 }
 
 /**
- * @brief Special structure used to check and output a value from std::tuple.
+ * Special structure used to check and output a value from std::tuple.
  */
 template <size_t NUM>
 struct PrintTupleIP
@@ -83,7 +81,7 @@ struct PrintTupleIP
 };
 
 /**
- * @brief Special structure used to finish tuple output.
+ * Special structure used to finish tuple output.
  */
 template <>
 struct PrintTupleIP<0>
@@ -99,7 +97,7 @@ template <typename ...Types>
 struct is_tuple<std::tuple<Types...>> : std::true_type {};
 
 /**
- * @brief Outputs an ip address represented as std::tuple filled in with the same types.
+ * Outputs an ip address represented as std::tuple filled in with the same types.
  */
 template <typename ...Types>
 void print_ip(const std::tuple<Types...>& tuple)
